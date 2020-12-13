@@ -1,8 +1,8 @@
-import java.util.ArrayList;
-
+import java.util.*;
 public class StevenTester {
     public static void main(String[] args) {
-        
+
+        System.out.println("NoNullArrayList tests");
         try{
             NoNullArrayList<String> test1 = new NoNullArrayList<>();
             test1.add("s");
@@ -31,5 +31,24 @@ public class StevenTester {
             System.out.println(" set (index, Element) test: good");
         }
 
+        OrderedArrayList<Double> k = new OrderedArrayList<Double>();
+        k.add(3.0);
+        k.add(-99.0);
+        k.add(19.0);
+        k.add(1,17.0);
+        System.out.println(k);
+        k.add(1.0);
+        k.add(-1.0);
+        System.out.println(k);
+        OrderedArrayList<String> g = new OrderedArrayList<String>();
+        g.add("Lowry");
+        g.add("Theis");
+        g.add("Siakam");
+        g.add("Hayward");
+        System.out.println(g);
+        System.out.println(g.set(3, "Mo"));
+        System.out.println(g);
+        g.set(2,null);
+        System.out.println(g);
     }
 }

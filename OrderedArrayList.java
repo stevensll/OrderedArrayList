@@ -15,13 +15,16 @@ public class OrderedArrayList<T extends Comparable<T>> extends NoNullArrayList<T
     }
     public T set(int index, T element){
         T removed = super.get(index);
-        super.remove(index); 
-        this.add(element);
+        if (element == null) throw new IllegalArgumentException("cannot implement null");
+        else {
+            super.remove(index); 
+            super.add(getSortIndex(element), element);
+        }
         return removed;
     }
 
     public int getSortIndex(T element ){
-        if(element == null) throw new IllegalArgumentException("cannot sort null"); 
+        if(element == null) throw new IllegalArgumentException("cannot implement null"); 
         int index = 0;
         if (this.size() > 0){ 
             for(int i  = 0; i < super.size(); i++){
