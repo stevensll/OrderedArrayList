@@ -2,10 +2,11 @@ public class OrderedArrayList<T extends Comparable<T>> extends NoNullArrayList<T
     public OrderedArrayList(){
         super();
     }
-    public OrderedArrayList(int size){
-        super(size);
+    public OrderedArrayList(int initCap){
+        super(initCap);
     }
     public boolean add(T element){
+        //System.out.println(getSortIndex(element) + "for" + element);
         super.add(getSortIndex(element), element);
         return true;
     }
@@ -15,17 +16,18 @@ public class OrderedArrayList<T extends Comparable<T>> extends NoNullArrayList<T
     public T set(int index, T element){
         T removed = super.get(index);
         super.remove(index); 
-        super.add(getSortIndex(element), element);
+        this.add(element);
         return removed;
     }
 
     public int getSortIndex(T element ){
+        if(element == null) throw new IllegalArgumentException("cannot sort null"); 
         int index = 0;
-        for(int i  = 0; i < this.size()-1; i++){
-            if(element.compareTo(this.get(index+1))>0) index++;
+        if (this.size() > 0){ 
+            for(int i  = 0; i < super.size(); i++){
+                if(element.compareTo(super.get(i))>0) index = i+1;
+            }
         }
         return index;
     }
-    
-
 }
