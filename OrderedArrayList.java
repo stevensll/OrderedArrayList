@@ -23,7 +23,7 @@ public class OrderedArrayList<T extends Comparable<T>> extends NoNullArrayList<T
         return removed;
     }
 
-    public int getSortIndex(T element ){
+    private int getSortIndex(T element ){
         if(element == null) throw new IllegalArgumentException("cannot implement null"); 
         int index = 0;
         if (this.size() > 0){ 
